@@ -4,8 +4,10 @@ import java.io.File;
 import java.io.IOException;
 import java.math.RoundingMode;
 import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Locale;
 import java.util.stream.DoubleStream;
 import java.util.stream.IntStream;
 
@@ -519,7 +521,7 @@ public class JLibrosa {
 			throws IOException, WavFileException, FileFormatNotSupportedException {
 		float[][] magValueArray = readMagnitudeValuesFromFile(path, sampleRate, readDurationInSeconds, offsetDuration);
 
-		DecimalFormat df = new DecimalFormat("#.#####");
+		DecimalFormat df = new DecimalFormat("#.#####", new DecimalFormatSymbols(Locale.US));
 		df.setRoundingMode(RoundingMode.CEILING);
 
 		int mNumFrames = this.getNoOfFrames();
